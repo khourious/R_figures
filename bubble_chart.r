@@ -63,23 +63,16 @@ df_long$Timepoint <- factor(df_long$Timepoint, levels = timepoint_order)
 ggplot(df_long, aes(x = 1, y = Paper_Figure_Order)) +
   # Type of graph, size, color and level of transparency (alpha)
   geom_point(aes(size = -log10(FDR), color = NES), alpha = 0.8) +  # Use -log10(FDR) for size
-  #Define colors gradient
-  scale_color_gradient2(low = "#05B1F0", mid = "#f7f7f7", high = "#FF0B0B", 
+  scale_color_gradient2(low = "#05B1F0", mid = "#f7f7f7", high = "#FF0B0B",    #Define colors gradient
                         midpoint = 0, limits = c(-2.7, 3.2)) +
-  # Define size of dots
-  scale_size_continuous(range = c(3, 7)) +
-  # separate panels
-  facet_wrap(~ Timepoint, nrow = 1, strip.position = "top") +
-  # Graph appearance for ggthemes
-  theme_calc() +
-  #labels
-  labs(
-    title = " ",
+  scale_size_continuous(range = c(3, 7)) +   # Define size of dots
+  facet_wrap(~ Timepoint, nrow = 1, strip.position = "top") +   # separate panels
+  theme_calc() +   # Graph appearance for ggthemes
+  labs(title = " ",   #title and labels
     x = " ",
     y = " ",
     size = "-log10(FDR)",
-    color = "NES"
-  ) +
+    color = "NES") +
   theme(strip.background = element_rect(fill = "white", color = "black"), #background white for face wrap
         panel.border = element_rect(color = "black"), #black border
         strip.placement = "outside", # repositions panel names
@@ -88,6 +81,27 @@ ggplot(df_long, aes(x = 1, y = Paper_Figure_Order)) +
         strip.text = element_text(size = 16, face = "bold"), #Size and bold panel text
         axis.ticks.x = element_blank()) #remove marks in axix X
 
+#same graphic with contour in dotplots
+ggplot(df_long, aes(x = 1, y = Paper_Figure_Order)) +
+  geom_point(aes(size = -log10(FDR), fill = NES),  # fill para shape 21
+             shape = 21, color = "black", stroke = 0.5, alpha = 0.8) +  # contorno preto
+  scale_fill_gradient2(low = "#05B1F0", mid = "#f7f7f7", high = "#FF0B0B", 
+                       midpoint = 0, limits = c(-2.7, 3.2)) +
+  scale_size_continuous(range = c(3, 7)) +
+  facet_wrap(~ Timepoint, nrow = 1, strip.position = "top") +
+  theme_calc() +
+  labs(title = " ",
+    x = NULL,
+    y = " ",
+    size = "-log10(FDR)",
+    fill = "NES") +
+  theme(strip.background = element_rect(fill = "white", color = "black"),
+        panel.border = element_rect(color = "black"),
+        strip.placement = "outside",
+        panel.spacing = unit(0, "lines"),
+        axis.text = element_text(size = 14),
+        strip.text = element_text(size = 16, face = "bold"),
+        axis.ticks.x = element_blank())
 #save
 ggsave("bubble.svg", plot = last_plot(), width = 8, height = 9, bg = "transparent")
 
