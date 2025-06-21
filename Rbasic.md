@@ -1,5 +1,5 @@
 ---
-title: "Básico de R"
+title: "Básico de R - parte 1"
 author: "Joyce"
 date: "`r format(Sys.Date(), '%d de %B de %Y')`"
 output: html_document
