@@ -11,7 +11,7 @@ output: html_document
 Você pode redistribuí-lo sob certas circunstâncias.
 Digite 'license()' ou 'licence()' para detalhes de distribuição."
 
-# O Ciclo Natural da Programação: Ler, Entender e Escrever
+## O Ciclo Natural da Programação: Ler, Entender e Escrever
 Ao começar em R (ou em qualquer linguagem de programação), passamos por três habilidades fundamentais:
 
 1. Ler Código
@@ -139,11 +139,10 @@ se_for_muito_longa_é_ruim_de_reutilizar
 | Ícone | Verificação                                | Descrição                                                                 |
 |:-----:|--------------------------------------------|---------------------------------------------------------------------------|
 | 🔤    | Nomes claros e consistentes                | Evite abreviações confusas. Use nomes como `idade_total`, `dados_paciente`. |
-| 🚫    | Sem espaços em variáveis                   | Use `_`, `.` ou `camelCase`. Ex: `idade_do_paciente`.                     |
+| 🚫    | Sem espaços em variáveis                   | Use `_`, `.` ou `camelCase`. Ex: `idade_do_paciente` ou `IdadePaciente`.  |
 | 🔠    | Maiúsculas e minúsculas importam           | `idade` ≠ `Idade`. O R diferencia tudo.                                   |
 | 📦    | Use `c()` para criar vetores               | Junta vários valores num mesmo objeto.                                   |
 | 📝    | Comente seu código com `#`                 | Explicações ajudam a lembrar e entender.                                  |
-| ❓    | Peça ajuda quando precisar                 | Use `?função`, `help()` ou explore fóruns/IA.                             |
-| 🔁    | Teste seu código aos poucos                | Rode em blocos pequenos para entender os resultados.                      |
+| ❓    | Peça ajuda quando precisar                 | Explore fóruns/IA.                                                        |
 | 🧹    | Organize com seções e comentários          | Deixe seu script limpo e fácil de revisar depois.                         |
 
