@@ -23,5 +23,106 @@ Você pode criar dados manualmente:
 |Fator    |	sexo <- factor(c("F", "M", "F"))    | Valores categóricos (muito usados em estatística)                         |
 |Complexo |	z <- 2 + 3i	                        | Números complexos com parte imaginária                                    |
 |Data     |	hoje <- as.Date("2025-06-21")       | Datas reconhecidas como tipo próprio                                      |
-|:-------:|-------------------------------------|---------------------------------------------------------------------------|
 
+Já vimos alguns desses, mas e sobre tabelas? São todas a mesma coisa?
+
+Se você já trabalhou com o R sabe que não
+
+# Data frame
+
+Um data.frame é como uma planilha de Excel: cada coluna é uma variável e cada linha é uma observação.
+Você pode importar do seus dados pessoais ou construir dentro do R.
+
+Para importar:
+```{r}
+#instalar um pacote de leitura de dados de excel
+install.packages("readxl") #lembre das aspas
+
+#carregar a biblioteca
+library(readxl)
+
+#importar
+tabela_01 <- read_excel("tabela_01.xlsx")
+```
+Se o arquivo for em .csv (separado por vírgulas), não precisa de muito esforço:
+
+```{r}
+tabela_01 <- read.csv("tabela_01.csv")
+```
+Você também pode usar:
+
+```{r}
+dados <- read.csv2("meuarquivo.csv", sep = ";")  # quando o separador é ponto e vírgula
+```
+
+Para construir:
+
+```{r}
+dados <- data.frame(
+  nome = c("Ana", "Bruno", "Carlos"),
+  idade = c(25, 30, 28),
+  altura = c(1.65, 1.82, 1.74)
+)
+```
+
+vai aparecer um data frame tipo assim:
+
+| nome    | idade  | altura |
+|:-------:|--------|--------|
+| Ana     |   25   |  1.65  |
+| Bruno   |   30   |  1.82  |
+| Carlos  |   28   |  1.74  |
+
+Preciso lembrar de todos os códigos? Na verdade, não.
+Conforme vai usando, você vai se lembrar das coisas que mais usa, sempre pode perguntar a uma IA como fazer essas coisas ou voltar a esse material para se lembrar.
+
+Importar dados é uma atividade rotineira, você vai lembrar de algum caminho.
+
+# Matriz
+Uma matriz é uma tabela só de números (ou de um único tipo de dado), organizada em linhas e colunas, como em matemática.
+
+```{r}
+m <- matrix(1:9, nrow = 3, ncol = 3)
+```
+
+# Lista
+Uma lista é um “bolsão” que pode guardar qualquer coisa: números, textos, vetores, data.frames, até funções!
+
+Pense numa lista de compras:
+1. Sabão
+2. Amacianete
+3. Maçã
+4. Laranja
+5. Biscoito
+6. Pão
+7. Azeite
+8. Frango
+9. Shampoo
+10. Sabonete
+
+Perceba que os itens não fazem parte das mesmas categorias (comida, itens de limpeza, produtos de higiene), mas todos estão na mesma lista. 
+
+Funciona de forma similar no R:
+
+```{r}
+minha_lista <- list(Cidade = "Salvador", idade = 476, Praias = c(Barra, Itapuã, Piatã, Ribeira))
+```
+# Fator
+Um fator é usado para representar variáveis categóricas, como “sexo”, “estado civil”, “resposta: sim/não”. Por trás, o R trata esses valores como níveis numéricos com nomes.
+
+```{r}
+genero <- factor(c("Feminino", "Masculino", "Feminino"))
+```
+
+O R entende isso como uma variável com dois níveis: “Feminino” e “Masculino”.
+
+Fatores são essenciais em análises estatísticas porque eles tratam categorias como níveis diferenciados, e não apenas texto qualquer.
+
+# Resumo
+
+|Tipo de Estrutura	| O que é	|Exemplo simples |
+|:-------:|--------|---------|
+|Data frame	|Tabela com colunas (variáveis) e linhas (observações)	 | dados <- data.frame(nome, idade)|
+|Matriz	|Tabela com apenas um tipo de dado (tudo número, por exemplo) |	matrix(1:6, nrow = 2)|
+|Lista	|Uma coleção de objetos diferentes (texto, vetores, funções…) |	lista <- list(nome, idade, notas)|
+|Fator	|Variável categórica com níveis definidos |	factor(c("sim", "não", "sim"))|

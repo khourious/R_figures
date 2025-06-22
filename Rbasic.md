@@ -45,7 +45,7 @@ Conforme avançamos a leitura vai ficando mais complexa, mas a lógica é sempre
 
 ## Código em R
 
-1. Comentários
+### 1. Comentários
 ```{r}
 # Tudo que começa com # é um comentário e não é executado
 # Isso serve para explicar o que o código faz
@@ -53,13 +53,13 @@ Conforme avançamos a leitura vai ficando mais complexa, mas a lógica é sempre
 # ou para desativar uma linha de código
 # ou para deixar um código mais legível ou organizado
 ```
-2. Atribuição de Valores
+### 2. Atribuição de Valores
 ```{r}
 x <- 10  # A forma mais comum de atribuição
 y = 20   # Também funciona
 ```
 
-O que significa <-?
+### O que significa <-?
 
 Essa seta é usada para atribuir um valor a um objeto. É como dizer: “coloque esse valor aqui dentro dessa caixinha”.
 ou "x agora vale 10 e y agora vale 20". 
@@ -68,22 +68,31 @@ Mas a seta "<-" é a forma tradicional e mais usada pela comunidade R, especialm
 
 No teclado, para fazer <-, você digita < e depois -, e o R automaticamente entende como uma atribuição.
 
-3. Tipos de dados
+### 3. Tipos de dados
 ```{r}
 # Existem vários tipos de dados em R, mas os mais comuns são:
 # Números
 x <- 10.5  # Números decimais
-y <- 5     # Números inteiros
+
+#Integer
+y <- 5L     # Números inteiros
+
 # Texto (chamamos de "strings")
 nome <- "meu nome é:"  # Texto entre aspas (complete com seu nome)
+
 # Lógicos (booleanos)
 verdadeiro <- TRUE  # Verdadeiro
 falso <- FALSE  # Falso
+
 # Vetores
 idades <- c(25, 30, 35)  # Vetor de números
 ```
-O que é um vetor em R? Um vetor é como uma fileirinha de valores do mesmo tipo. Ele é a estrutura mais simples e mais usada no R. 
+#### O que é um vetor em R? 
+
+Um vetor é como uma fileirinha de valores do mesmo tipo. Ele é a estrutura mais simples e mais usada no R. 
+
 Pensa nele como uma caixinha que guarda vários números, textos ou valores lógicos em sequência.
+
 Ele é muito usado porque permite trabalhar com vários valores de uma vez só, facilitando operações matemáticas e manipulação de dados.
 
 ```{r}
@@ -94,22 +103,17 @@ idade <- c(5, 10, 15)
 nomes <- c("Ana", "Bruno", "Carlos")
 ```
 
-O c() é uma função que significa "combine" ou "concatenate", usada para criar vetores.
-Todos os elementos de um vetor devem ser do mesmo tipo. Se não utilizar o c(), o R não vai entender que você quer criar um vetor e vai dar erro.
-Quando você usa c(), o R entende que você está juntando esses valores em um único objeto, formando um vetor.
-Quando usar o c()?
+O `c()` é uma função que significa "combine" ou "concatenate", usada para criar vetores.
+
+Todos os elementos de um vetor devem ser do mesmo tipo. Se não utilizar o `c()`, o R não vai entender que você quer criar um vetor e vai dar erro.
+Quando você usa `c()`, o R entende que você está juntando esses valores em um único objeto, formando um vetor.
+
+### Quando usar o c()?
+
 Sempre que você quiser criar um vetor com VÁRIOS valores, seja números, textos ou lógicos.
 
-R diferencia TUDO
 
-Quando falamos ou escrevemos com outras pessoas, entedemos pequenos erros, variações de linguagem e escritas erradas. *O R não é assim.*
-
-No R, "idade", "Idade", "idades" e "Idades" são nomes completamente diferentes. Isso porque a linguagem é case-sensitive (sensível a maiúsculas e minúsculas).
-E cada variável deve ser única dentro do mesmo ambiente de trabalho, ou seja cada vez que eu escrevo de um jeito diferente, eu crio um objeto novo. Isso é importante porque evita confusões e garante que você saiba exatamente qual variável está usando.
-
-Por isso, crie nomes de variáveis que façam sentido e sejam fáceis de lembrar e sejam diferentes o suficiente para que VOCÊ possa trabalhar
-
-4. Variáveis
+### 4. Variáveis
 
 No R (e em praticamente todas as linguagens de programação), espaços em nomes de variáveis não são permitidos. Se você tentar escrever:
 ```{r}
@@ -127,7 +131,17 @@ IdadeDoPaciente <- 25
  Ou seja, sempre que for criar uma variável, evite espaços e use caracteres permitidos.
   Perceba que mesmo cada jeito de escrever são aceitáveis, mas cada um cria uma variável diferente.
 
-Outras dicas para nomes de variáveis:
+### R diferencia TUDO
+
+Quando falamos ou escrevemos com outras pessoas, entedemos pequenos erros, variações de linguagem e escritas erradas. *O R não é assim.*
+
+No R, "idade", "Idade", "idades" e "Idades" são nomes completamente diferentes. Isso porque a linguagem é case-sensitive (sensível a maiúsculas e minúsculas).
+
+E cada variável deve ser única dentro do mesmo ambiente de trabalho, ou seja cada vez que eu escrevo de um jeito diferente, eu crio um objeto novo. Isso é importante porque evita confusões e garante que você saiba exatamente qual variável está usando.
+
+Por isso, crie nomes de variáveis que façam sentido e sejam fáceis de lembrar e sejam diferentes o suficiente para que VOCÊ possa trabalhar.
+
+#### Outras dicas para nomes de variáveis:
 
 * Comece com letra (nunca com número!)
 
@@ -139,7 +153,9 @@ Escreva de forma simples e padronizada. Quanto mais clara for sua variável, mai
 
 se_for_muito_longa_é_ruim_de_reutilizar
 
-| Ícone | Verificação                                | Descrição                                                                 |
+## Resumo
+
+|  |                                |                                                                  |
 |:-----:|--------------------------------------------|---------------------------------------------------------------------------|
 | 🔤    | Nomes claros e consistentes                | Evite abreviações confusas. Use nomes como `idade_total`, `dados_paciente`. |
 | 🚫    | Sem espaços em variáveis                   | Use `_`, `.` ou `camelCase`. Ex: `idade_do_paciente` ou `IdadePaciente`.  |
