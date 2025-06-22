@@ -1,7 +1,6 @@
 ---
 title: "Básico de R - parte 1"
 author: "Joyce"
-date: "`r format(Sys.Date(), '%d de %B de %Y')`"
 output: html_document
 ---
 
@@ -14,19 +13,23 @@ Digite 'license()' ou 'licence()' para detalhes de distribuição."
 ## O Ciclo Natural da Programação: Ler, Entender e Escrever
 Ao começar em R (ou em qualquer linguagem de programação), passamos por três habilidades fundamentais:
 
-1. Ler Código
+1. Ler Código:
+
 No início, você vai se deparar com códigos prontos. 
+
 Ler é o primeiro passo para se familiarizar com a lógica, os comandos e a forma como o R “fala”.
-Exemplo: entender o que significa:  mean(c(1, 2, 3)).
+Exemplo: entender o que significa:  `mean(c(1, 2, 3))`.
 
-2. Entender Código
+2. Entender Código:
+
 Aqui você começa a saber por que aquele código está ali, o que ele faz e como ele se conecta com os dados. 
-Exemplo: perceber que mean() calcula a média e c(1, 2, 3) cria um vetor (e o que é um vetor)
+Exemplo: perceber que `mean()` calcula a média e `c(1, 2, 3`) cria um vetor (e o que é um vetor?)
 
-3. Escrever Código
+3. Escrever Código:
+
 O ápice do aprendizado! 
 Com prática, você começa a escrever seus próprios scripts e funções — seja para fazer gráficos, análises ou automatizar tarefas.
-Exemplo: criar um gráfico com plot(x, y) e ajustar os parâmetros do jeito que você quiser.
+Exemplo: criar um gráfico com `plot(x, y)` e ajustar os parâmetros do jeito que você quiser.
 
 ## Objetivos do Curso
 
