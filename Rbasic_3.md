@@ -73,7 +73,9 @@ vai aparecer um data frame tipo assim:
 | Bruno   |   30   |  1.82  |
 | Carlos  |   28   |  1.74  |
 
-Preciso lembrar de todos os códigos? Na verdade, não.
+### Preciso lembrar de todos os códigos? 
+Na verdade, não.
+
 Conforme vai usando, você vai se lembrar das coisas que mais usa, sempre pode perguntar a uma IA como fazer essas coisas ou voltar a esse material para se lembrar.
 
 Importar dados é uma atividade rotineira, você vai lembrar de algum caminho.
