@@ -52,13 +52,13 @@ tabela_01 <- read.csv("tabela_01.csv")
 Você também pode usar:
 
 ```{r}
-dados <- read.csv2("meuarquivo.csv", sep = ";")  # quando o separador é ponto e vírgula
+tabela_01 <- read.csv2("meuarquivo.csv", sep = ";")  # quando o separador é ponto e vírgula
 ```
 
 Para construir:
 
 ```{r}
-dados <- data.frame(
+tabela_01 <- data.frame(
   nome = c("Ana", "Bruno", "Carlos"),
   idade = c(25, 30, 28),
   altura = c(1.65, 1.82, 1.74)
@@ -72,6 +72,8 @@ vai aparecer um data frame tipo assim:
 | Ana     |   25   |  1.65  |
 | Bruno   |   30   |  1.82  |
 | Carlos  |   28   |  1.74  |
+
+Normalmente, anotamos data frames como `df`.
 
 ### Preciso lembrar de todos os códigos? 
 Na verdade, não.
@@ -128,3 +130,93 @@ Fatores são essenciais em análises estatísticas porque eles tratam categorias
 |Matriz	|Tabela com apenas um tipo de dado (tudo número, por exemplo) |	matrix(1:6, nrow = 2)|
 |Lista	|Uma coleção de objetos diferentes (texto, vetores, funções…) |	lista <- list(nome, idade, notas)|
 |Fator	|Variável categórica com níveis definidos |	factor(c("sim", "não", "sim"))|
+
+## Por que é importante?
+
+Existem alguns motivos:
+
+Determinadas funções só funcionam com um tipo especifico de dados
+
+A forma de usar os dados muda de acordo com o formato deles
+
+```{r}
+minha_lista@
+
+tabela_01$nome #vai mostrar a tabela e a coluna nome
+```
+
+## Como mudar o formato?
+
+A gente usa funções como `as.data.frame`
+
+```{r}
+m #nossa matriz
+
+dataframe_m <- as.data.frame(m) 
+
+dataframe_m #transformei matriz em tabela
+```
+
+funciona de forma similar com:
+
+`as.matriz`
+
+```{r}
+matriz <- as.matrix(df)
+```
+`as.factor`
+
+```{r}
+respostas <- c("sim", "não", "sim", "talvez")
+respostas_fator <- as.factor(respostas)
+```
+A saída será algo como:
+
+```{r}
+[1] sim    não    sim    talvez
+Levels: não sim talvez
+```
+
+Isso é muito importante em análises estatísticas porque o R trata fatores de forma especial, como variáveis categóricas com níveis ordenados ou não, o que afeta como elas aparecem em gráficos, tabelas, e modelos estatísticos.
+
+# Como ver meus dados? 
+
+```{r}
+str(tabela_01)
+summary(tabela_01)
+head(tabela_01)
+tail(tabela_01)
+```
+
+A saída do `str(tabela_01)` mostra a estrutura interna do objeto. Indica o tipo de cada coluna, o número de observações e uma amostra dos dados.
+
+```{r}
+'data.frame':   3 obs. of  3 variables:
+ $ nome  : chr  "Ana" "Bruno" "Carlos"
+ $ idade : num  25 30 28
+ $ altura: num  1.65 1.82 1.74
+```
+
+Você vê que `nome` é caractere (chr), e que idade e altura são numéricos (num).
+
+A saída do `summary(tabela_01)` é perfeito pra entender rapidamente como estão distribuídos os dados.
+
+```{r}
+     nome              idade         altura     
+ Length:3           Min.   :25.0   Min.   :1.650  
+ Class :character   1st Qu.:26.5   1st Qu.:1.695  
+ Mode  :character   Median :28.0   Median :1.740  
+                    Mean   :27.7   Mean   :1.737  
+                    3rd Qu.:29.0   3rd Qu.:1.780  
+                    Max.   :30.0   Max.   :1.820 
+```
+`head(tabela_01)` mostra as primeiras linhas da tabela (por padrão, as 6 primeiras linhas; no seu caso, mostra todas porque há só 3) e `tail(tabela_01)` mostra as últimas linhas da tabela:
+
+```{r}
+   nome idade altura
+1   Ana    25   1.65
+2 Bruno    30   1.82
+3 Carlos   28   1.74
+```
+
+É útil pra espiar os dados sem precisar mostrar tudo de uma vez.
