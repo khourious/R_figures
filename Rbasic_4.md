@@ -54,6 +54,9 @@ https://cran.r-project.org/web/packages/ggplot2/ggplot2.pdf
 Aqui o link para o site:
 https://ggplot2.tidyverse.org/
 
+E uma introdução a lógica do ggplot2 (ou vignette, se quiser ser mais preciso):
+https://ggplot2.tidyverse.org/articles/ggplot2.html
+
 E aqui o link para o livro:
 https://ggplot2-book.org/
 
@@ -211,5 +214,7 @@ ggplot(data = mpg, aes(x = displ, y = hwy)) +
 6. Vignettes ou Get Started
 
 * São tutoriais prontos mostrando como usar o pacote na prática.
+
+Poucos pacotes são bem documentados, ggplot2 é um desses, por isso recomendo **FORTEMENTE** que você leia atentamente a essa vignette: https://ggplot2.tidyverse.org/articles/ggplot2.html para que possamos seguir com esses tutoriais de como fazer gráficos no R
 
 # O que é o *Help* dentro do R?
