@@ -150,7 +150,7 @@ ggplot(dados_long, aes(x = CellType, y = Fraction, fill = Group, colour = Group)
     axis.line = element_line(size = 0.4, colour = "black"),
     panel.border = element_rect(fill = NA, colour = NA)
   ) + # Definir detalhes do gráfico
-  stat_compare_means(method = "wilcox.test", 
+  stat_compare_means(method = "kruskal.test", 
                        label = "p.signif", 
                        hide.ns = TRUE, 
                        size = 6) # adicionar p-values ao gráfico
@@ -162,22 +162,35 @@ ggsave("cibersort_deconvolution_boxplot.pdf", width = 10, height = 6)
 
 # Para executar testes estatísticos entre os grupos
 # Rodar pairwise Wilcoxon para cada CellType
+library(dplyr)
+
 mann <- dados_long %>%
   group_by(CellType) %>%
   do({
-    res <- wilcox.test(.$Fraction, .$Group, p.adjust.method = "fdr")
-    # transformar matriz em tibble com nomes dos grupos
+    # pairwise Wilcoxon para cada tipo celular
+    res <- pairwise.wilcox.test(.$Fraction, .$Group,
+                                p.adjust.method = "fdr")
+    
+    # transformar matriz em tibble
     mat <- res$p.value
     df <- as.data.frame(as.table(mat)) %>%
-      filter(!is.na(Freq)) %>%
-      rename(group1 = Var1, group2 = Var2, p.value = Freq)
+      rename(group1 = Var1, group2 = Var2, p.value = Freq) %>%
+      filter(!is.na(p.value)) %>%
+      mutate(CellType = unique(.$CellType)) %>%
+      # acrescentar coluna com asteriscos de significância
+      mutate(signif = case_when(
+        p.value < 0.0001 ~ "****",
+        p.value < 0.001 ~ "***",
+        p.value < 0.01  ~ "**",
+        p.value < 0.05  ~ "*",
+        TRUE ~ "ns"
+      ))
+    
     df
   }) %>%
   ungroup()
 
 # Salvar resultados em CSV
-posthoc_tidy <- mann %>%
-  broom::tidy()
 write.csv(posthoc_tidy, "wil_results.csv", row.names = FALSE)
 
 
